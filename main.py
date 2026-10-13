@@ -5,8 +5,13 @@ from sqlalchemy.orm import Session
 from Database.database import User, get_db_session
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
+from fastapi import HTTPException
+import re
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="Auth")
 pass_hash = PasswordHasher()
 
@@ -21,15 +26,24 @@ def verify_password(stored_password: str, provided_password: str) -> bool:
 
 # Signup routes
 @app.get("/signup", response_class=HTMLResponse)
-async def signup_page(request: Request):
-    return templates.TemplateResponse("signup.html", {"request": request})
+def signup_page(request: Request):
+    return templates.TemplateResponse("signup.html", {"request": request, "user": None})
 
 @app.post("/signup", response_class=HTMLResponse)
-async def signup(request: Request, username: str = Form(...), email: str = Form(...), password: str = Form(...), db: Session = Depends(get_db_session)):
+def signup(request: Request, username: str = Form(...), email: str = Form(...), password: str = Form(...), db: Session = Depends(get_db_session)):
     existing_user = db.query(User).filter((User.username == username) | (User.email == email)).first()
     if existing_user:
         return templates.TemplateResponse("signup.html", {"request": request, "message": "Username or email already exists!"})
-    
+
+    if (
+        len(password) < 8
+        or not re.search(r"\d", password)
+        or not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password)
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="Password must have at least 8 characters, one digit, and one special character."
+        )
     hashed_password = hash_password(password)
     new_user = User(username=username, email=email, password=hashed_password)
     db.add(new_user)
@@ -38,17 +52,17 @@ async def signup(request: Request, username: str = Form(...), email: str = Form(
 
 # Login routes
 @app.get("/login", response_class=HTMLResponse)
-async def login_page(request: Request):
+def login_page(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @app.post("/login", response_class=HTMLResponse)
-async def login(request: Request, email: str = Form(...), password: str = Form(...), db: Session = Depends(get_db_session)):
-    user = db.query(User).filter(User.email == email).first()
+def login(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db_session)):
+    user = db.query(User).filter(User.username == username).first()
     if not user or not verify_password(user.password, password):
         return templates.TemplateResponse("login.html", {"request": request, "message": "Invalid credentials!"})
-    return templates.TemplateResponse("dashboard.html", {"request": request, "message": f"Welcome {user.username}!"})
+    return RedirectResponse(url="/dashboard", status_code=303)
 
 # Dashboard route
 @app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard_page(request: Request):
+def dashboard_page(request: Request):
     return templates.TemplateResponse("dashboard.html", {"request": request})
