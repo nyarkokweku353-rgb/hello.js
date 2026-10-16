@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Project-1-Data</title>
+</head>
+<body>
+    <h1>STUDENT DATA</h1>
+    <i id="add" class="fa-solid fa-plus"></i>
+    <label for="add">Add</label>
+    <i id="add" class="fa-solid fa-minus"></i>
+    <label for="minus">Remove all</label>
+    <i id="add" class="fa-solid fa-times"></i>
+    <label for="times">Save changes</label>
+    
+    <form action="/data" method="post">
+        <label for="student_name">Student Full Name:</label>
+        <input type="text" name="studentname" placeholder="Student Full Name . . ."><br>
+        <label for="student_age">Age:</label>
+        <input type="number" name="studentage" placeholder="Age . . ."><br>
+        <label for="student_class">Class/Form:</label>
+        <input type="number" name="studentclass" placeholder="Class/Form . . ."><br>
+        <label for="parent_name">Name of Guardian or Parent:</label>
+        <input type="text" name="parentname" placeholder="Name of Guardian or Parent . . ."><br>
+        <label for="parent_contact">Parent or Guardian Contact:</label>
+        <input type="number" name="parentcontact" placeholder="Parent or Guardian Contact . . ."><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

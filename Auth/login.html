@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project-1</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Project-1-login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="/login" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
-        <br>
-        <button type="submit">Login</button>
-    </form>
-    {% if message %}
-        <p style="color:red;">{{ message }}</p>
-    {% endif %}
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h2 class="active"><a href="/login">Sign In</a></h2>
+            <h2 class="inactive underlineHover"><a href="/signup">Sign Up</a></h2>
+
+            <div class="fadeIn first">
+                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+            </div>
+
+            <form action="/login" method="post">
+                {% if message %}
+                    <p style="color:greenyellow;">{{ message }}</p>
+                {% endif %}
+                <input type="text" name="username" class="fadeIn second" placeholder="username">
+                <input type="password" class="fadeIn third" name="password" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+
+            <div id="formFooter">
+                <a class="underlineHover" href="/reset-password">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

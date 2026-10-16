@@ -8,24 +8,44 @@
     <title>Project-1</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
     <i id="hamburger" class="fa-solid fa-bars"></i>
     <div id="nav-menu" class="nav-menu">
         <a href="/dashboard">Dashboard</a>
-        <a href="/data">Data</a>
         <a href="/profile">Profile</a>
+        <a href="/data">Data</a>
+        <a href="/messaging">SMS</a>
         <a href="/settings">Settings</a>
         <a href="/logout">Logout</a>
     </div>
     <p>Welcome to your dashboard!</p>
 
-        <script>
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
+    
+    </table>
+        
+</body>
 
-            hamburger.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-            });
-        </script>
+<body>
+    <h1>Dashboard</h1>
+    <div id="Content">
+        <h2>Student Records</h2>
+        <table border="1">
+            <tr>
+                <th>Student Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>Parent Name</th>
+                <th>Parent Contact</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.studentname }}</td>
+                <td>{{ student.studentage }}</td>
+                <td>{{ student.studentclass }}</td>
+                <td>{{ student.parentname }}</td>
+                <td>{{ student.parentcontact }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
