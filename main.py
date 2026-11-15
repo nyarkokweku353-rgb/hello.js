@@ -69,6 +69,11 @@ def get_student_data_on_dashboard(request:Request,  db: Session = Depends(get_db
     return templates.TemplateResponse("dashboard.html", {"request":request, "students": students})
 
 #Data route
+@app.get("/data")
+def data_form(request: Request):
+    return templates.TemplateResponse("data.html",{"request": request})
+
+
 @app.post("/data", response_class=HTMLResponse)
 def create_student_data(request:Request, studentname : str = Form(...), studentage : str = Form(...), studentclass : str = Form(...), parentname : str = Form(...), parentcontact : str = Form(...), db: Session = Depends(get_db_session)):
     new_student_record = Student(studentname=studentname, studentage=studentage, studentclass=studentclass, parentname=parentname, parentcontact=parentcontact)
@@ -107,3 +112,14 @@ def update_student_data(request:Request, studentname : str = Form(...), studenta
 def student_data_on_message_view(request:Request, db : Session = Depends(get_db_session)):
     student = db.query(Student).all()
     return templates.TemplateResponse("messaging.html",{"request" : request, "student":student})
+
+
+#profile route
+@app.get("/profile",response_class="HTMLResponse")
+def get_profile(request:Request, db: Session = Depends(get_db_session)):
+    return templates.TemplateResponse("profile.html",{"request":request, "msg": "Successfully in profile!"})
+
+#settings route
+@app.get("/settings",response_class=HTMLResponse)
+def get_profile(request:Request, db: Session = Depends(get_db_session)):
+    return templates.TemplateResponse("setting.html", {"request":request})

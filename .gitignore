@@ -7,4 +7,4 @@ __pycache__/
 .venv/
 public/
 backend/
-Database/users.db
+Database/database.db
