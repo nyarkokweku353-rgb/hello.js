@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../static/style.css">
-    <title>Project-1</title>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <title>Project-1-dashboard</title>
 </head>
-<body>
+
+<body class="dashboard">
+
     <i id="hamburger" class="fa-solid fa-bars"></i>
+
     <div id="nav-menu" class="nav-menu">
         <a href="/dashboard">Dashboard</a>
         <a href="/profile">Profile</a>
@@ -17,17 +21,12 @@
         <a href="/settings">Settings</a>
         <a href="/logout">Logout</a>
     </div>
+
     <p>Welcome to your dashboard!</p>
 
-    
-    </table>
-        
-</body>
-
-<body>
-    <h1>Dashboard</h1>
-    <div id="Content">
+    <div id="content">
         <h2>Student Records</h2>
+
         <table border="1">
             <tr>
                 <th>Student Name</th>
@@ -36,6 +35,7 @@
                 <th>Parent Name</th>
                 <th>Parent Contact</th>
             </tr>
+
             {% for student in students %}
             <tr>
                 <td>{{ student.studentname }}</td>
@@ -44,8 +44,29 @@
                 <td>{{ student.parentname }}</td>
                 <td>{{ student.parentcontact }}</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </table>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.getElementById("hamburger");
+            const navMenu = document.getElementById("nav-menu");
+
+            hamburger.addEventListener("click", () => {
+                navMenu.classList.toggle("active");
+            });
+
+            document.addEventListener("click", (e) => {
+                if (
+                    !hamburger.contains(e.target) &&
+                    !navMenu.contains(e.target)
+                ) {
+                    navMenu.classList.remove("active");
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
