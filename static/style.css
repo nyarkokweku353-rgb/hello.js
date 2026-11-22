@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.dashboard{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    color: white;
+    display: block;
+    padding: 70px 20px 20px;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#formContent{
+    background: #ffffff;
+    width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.signin,
+.signup{
+    display: inline-block;
+    margin: 0 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.signin a,
+.signup a{
+    text-decoration: none;
+    color: #2a5298;
+}
+
+.signin a:hover,
+.signup a:hover{
+    color: #1e3c72;
+}
+
+#icon{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus{
+    border-color: #2a5298;
+    box-shadow: 0 0 8px rgba(42,82,152,0.3);
+}
+
+input[type="submit"]{
+    width: 100%;
+    padding: 12px;
+    background-color: #2a5298;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover{
+    background-color: #1e3c72;
+}
+
+p{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#formFooter{
+    margin-top: 20px;
+}
+
+.underlineHover{
+    text-decoration: none;
+    color: #2a5298;
+}
+
+.underlineHover:hover{
+    text-decoration: underline;
+}
+
+.fadeInDown{
+    animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#hamburger {
+    font-size: 28px;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.nav-menu a:hover {
+    background-color: #f0f0f0;
+}

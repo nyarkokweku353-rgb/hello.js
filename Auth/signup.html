@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Project-1-login</title>
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <h2 class="signin"><a href="/login">Sign In</a></h2>
+            <h2 class="signup"><a href="/signup">Sign Up</a></h2>
+
+            <div class="fadeIn first">
+                <img src="/static/rest.webp" id="icon" alt="User Icon" />
+            </div>
+
+            <form action="/signup" method="post">
+                {% if message %}
+                    <p style="color:yellowgreen;">{{ message }}</p>
+                {% endif %}
+                <input type="text" name="username" placeholder="username">
+                <input type="email" name="email" placeholder="email">
+                <input type="password" name="password" placeholder="password">
+                <input type="submit" class="fadeIn fourth" value="Sign Up">
+            </form>
+
+            <div id="formFooter">
+                <a class="underlineHover" href="/reset-password">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
