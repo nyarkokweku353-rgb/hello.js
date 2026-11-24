@@ -13,13 +13,157 @@ body{
     align-items: center;
 }
 
-body.dashboard{
+body.dashboard,
+body.messaging,
+body.data{
     font-family: Arial, Helvetica, sans-serif;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
     min-height: 100vh;
     color: white;
     display: block;
     padding: 70px 20px 20px;
+}
+
+.action-icon{
+    font-size: 24px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.page-title{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.search-container .search-field{
+    width: 400px;
+    flex: none;
+}
+
+.search-icon{
+    font-size: 20px;
+}
+
+.search-btn{
+    background: #2a5298;
+}
+
+.search-btn:hover{
+    background: #1e3c72;
+}
+
+.table-container{
+    overflow: hidden;
+    border-radius: 10px;
+    background: white;
+}
+
+.student-table{
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.student-table th{
+    background: #2a5298;
+    color: white;
+    padding: 15px;
+}
+
+.student-table td{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.student-table tr:hover{
+    background: #f5f5f5;
+}
+
+.message-section{
+    margin-top: 20px;
+}
+
+.section-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mobile-icon{
+    font-size: 24px;
+}
+
+.message-title{
+    margin: 0;
+}
+
+.message-label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.message-box{
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+.send-btn{
+    background: #28a745;
+}
+
+.send-btn:hover{
+    background: #218838;
+}
+
+.action-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.call-btn{
+    background: #ff9800;
+}
+
+.call-btn:hover{
+    background: #e68900;
+}
+
+.call-all-btn{
+    background: #dc3545;
+}
+
+.call-all-btn:hover{
+    background: #bb2d3b;
+}
+
+.search-btn,
+.send-btn,
+.call-btn,
+.call-all-btn{
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dashboard-container{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 .wrapper{
@@ -67,7 +211,8 @@ body.dashboard{
 
 input[type="text"],
 input[type="email"],
-input[type="password"]{
+input[type="password"],
+input[type="number"]{
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -79,7 +224,8 @@ input[type="password"]{
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus{
+input[type="password"]:focus,
+input[type="number"]:focus{
     border-color: #2a5298;
     box-shadow: 0 0 8px rgba(42,82,152,0.3);
 }
@@ -167,4 +313,13 @@ p{
 
 .nav-menu a:hover {
     background-color: #f0f0f0;
+}
+
+textarea{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    resize: vertical;
+    margin-bottom: 15px;
 }
